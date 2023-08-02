@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useContext } from "react";
+import { AppContext } from "./context/AppContext";
 
-function App() {
+
+function App() { 
+  const { wallet, connectWallet, disconnectWallet, getLimitPeopleInEvent, limitPeopleInEvent } = useContext(AppContext);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={connectWallet}>Connect</button>
+      <p>{wallet}</p>
+      <button className='myButton' onClick={disconnectWallet}>Disconnect Wallet</button>
+      <button onClick={getLimitPeopleInEvent}>Get Limit people</button>
+      <p>{limitPeopleInEvent}</p>
     </div>
   );
 }
